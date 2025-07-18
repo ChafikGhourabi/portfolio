@@ -4,20 +4,51 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Globe, Github } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
 import type { Project } from '@/types';
 
-export async function Projects() {
-  const { data: projects, error } = await supabase
-    .from('projects')
-    .select('*')
-    .returns<Project[]>();
-
-  if (error) {
-    console.error('Error fetching projects:', error.message);
+const staticProjects: Project[] = [
+  {
+    id: 1,
+    title: 'E-Commerce App',
+    description: 'A full-featured mobile storefront built with performance and user experience in mind, supporting thousands of daily active users.',
+    tech: ['React Native', 'TypeScript', 'Redux', 'Stripe API'],
+    role: 'Lead Mobile Developer',
+    challenges: 'Integrating a seamless payment gateway and optimizing image-heavy product lists for fast loading on all devices.',
+    image: 'https://placehold.co/600x400.png',
+    imageHint: 'mobile app shopping',
+    liveUrl: '#',
+    repoUrl: '#',
+  },
+  {
+    id: 2,
+    title: 'Fitness Tracker App',
+    description: 'A cross-platform app to track workouts, set fitness goals, and visualize progress with interactive charts and social sharing features.',
+    tech: ['React Native', 'Expo', 'Firebase', 'Chart.js'],
+    role: 'Full-Stack Developer',
+    challenges: 'Implementing real-time data synchronization with Firebase and creating custom, performant data visualizations for user statistics.',
+    image: 'https://placehold.co/600x400.png',
+    imageHint: 'mobile app fitness',
+    liveUrl: '#',
+    repoUrl: '#',
+  },
+    {
+    id: 3,
+    title: 'Real-Time Chat Application',
+    description: 'A messaging app with instant message delivery, push notifications, and rich media sharing capabilities, built for scalability.',
+    tech: ['React Native', 'Node.js', 'WebSocket', 'MongoDB'],
+    role: 'Mobile Application Developer',
+    challenges: 'Ensuring low-latency message delivery and handling network instability gracefully to provide a reliable user experience.',
+    image: 'https://placehold.co/600x400.png',
+    imageHint: 'mobile app chat',
+    liveUrl: '#',
+    repoUrl: '#',
   }
+];
 
-  const projectList = projects || [];
+
+export async function Projects() {
+  const projectList = staticProjects;
+  const error = null;
 
   return (
     <section id="projects" className="py-20 sm:py-32">
