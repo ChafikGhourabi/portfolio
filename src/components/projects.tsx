@@ -3,52 +3,15 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Globe, Github } from 'lucide-react';
+import { Globe, Github, AlertTriangle } from 'lucide-react';
 import type { Project } from '@/types';
-
-const staticProjects: Project[] = [
-  {
-    id: 1,
-    title: 'E-Commerce App',
-    description: 'A full-featured mobile storefront built with performance and user experience in mind, supporting thousands of daily active users.',
-    tech: ['React Native', 'TypeScript', 'Redux', 'Stripe API'],
-    role: 'Lead Mobile Developer',
-    challenges: 'Integrating a seamless payment gateway and optimizing image-heavy product lists for fast loading on all devices.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'mobile app shopping',
-    liveUrl: '#',
-    repoUrl: '#',
-  },
-  {
-    id: 2,
-    title: 'Fitness Tracker App',
-    description: 'A cross-platform app to track workouts, set fitness goals, and visualize progress with interactive charts and social sharing features.',
-    tech: ['React Native', 'Expo', 'Firebase', 'Chart.js'],
-    role: 'Full-Stack Developer',
-    challenges: 'Implementing real-time data synchronization with Firebase and creating custom, performant data visualizations for user statistics.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'mobile app fitness',
-    liveUrl: '#',
-    repoUrl: '#',
-  },
-    {
-    id: 3,
-    title: 'Real-Time Chat Application',
-    description: 'A messaging app with instant message delivery, push notifications, and rich media sharing capabilities, built for scalability.',
-    tech: ['React Native', 'Node.js', 'WebSocket', 'MongoDB'],
-    role: 'Mobile Application Developer',
-    challenges: 'Ensuring low-latency message delivery and handling network instability gracefully to provide a reliable user experience.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'mobile app chat',
-    liveUrl: '#',
-    repoUrl: '#',
-  }
-];
-
+import { supabase } from '@/lib/supabase';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export async function Projects() {
-  const projectList = staticProjects;
-  const error = null;
+  const { data: projects, error } = await supabase.from('projects').select('*').order('id');
+
+  const projectList: Project[] = projects || [];
 
   return (
     <section id="projects" className="py-20 sm:py-32">
@@ -56,7 +19,18 @@ export async function Projects() {
         <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
         <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">Here's a selection of projects that showcase my skills in React Native development.</p>
         
-        {projectList.length > 0 ? (
+        {error && (
+            <Alert variant="destructive" className="max-w-2xl mx-auto">
+                <AlertTriangle className="h-4 w-4" />
+                <AlertTitle>Error Fetching Projects</AlertTitle>
+                <AlertDescription>
+                    Could not fetch project data from the database. Please ensure the 'projects' table exists and your Supabase credentials are correct.
+                    <p className="font-mono text-xs mt-2 bg-background/50 p-2 rounded">{error.message}</p>
+                </AlertDescription>
+            </Alert>
+        )}
+
+        {!error && projectList.length > 0 && (
           <Carousel className="w-full max-w-6xl mx-auto" opts={{ loop: true }}>
             <CarouselContent>
               {projectList.map((project) => (
@@ -108,10 +82,11 @@ export async function Projects() {
             <CarouselPrevious className="hidden lg:flex" />
             <CarouselNext className="hidden lg:flex" />
           </Carousel>
-        ) : (
+        )}
+        
+        {!error && projectList.length === 0 && (
           <div className="text-center text-muted-foreground">
              <p>I am currently adding my projects. Please check back later.</p>
-             {error && <p className="text-destructive mt-2">Error fetching projects: {error.message}</p>}
           </div>
         )}
       </div>
