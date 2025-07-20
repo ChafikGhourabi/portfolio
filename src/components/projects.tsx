@@ -3,34 +3,56 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Globe, Github, AlertTriangle } from 'lucide-react';
+import { Globe, Github } from 'lucide-react';
 import type { Project } from '@/types';
-import { supabase } from '@/lib/supabase';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-export async function Projects() {
-  const { data: projects, error } = await supabase.from('projects').select('*').order('id');
+const projectList: Project[] = [
+    {
+      id: 1,
+      title: 'E-commerce App',
+      description: 'A full-featured e-commerce mobile application for iOS and Android, built with performance and user experience as top priorities.',
+      tech: ['React Native', 'Redux', 'TypeScript', 'Firebase', 'Stripe'],
+      role: 'Lead Mobile Developer',
+      challenges: 'Integrating a seamless payment gateway and managing a complex global state for the shopping cart were the main challenges.',
+      image: 'https://placehold.co/800x600.png',
+      imageHint: 'e-commerce mobile',
+      liveUrl: '#',
+      repoUrl: '#'
+    },
+    {
+      id: 2,
+      title: 'Fitness Tracker',
+      description: 'A cross-platform app to track workouts, set fitness goals, and visualize progress with interactive charts and social features.',
+      tech: ['React Native', 'GraphQL', 'Expo', 'Recharts', 'Node.js'],
+      role: 'Full-Stack Developer',
+      challenges: 'Optimizing real-time data synchronization between devices and implementing custom, performant charts for data visualization.',
+      image: 'https://placehold.co/800x600.png',
+      imageHint: 'fitness app',
+      liveUrl: '#',
+      repoUrl: '#'
+    },
+    {
+      id: 3,
+      title: 'Social Media Platform',
+      description: 'A mobile-first social media application focused on photo sharing and real-time messaging, with a custom backend.',
+      tech: ['React Native', 'Firebase Auth', 'Firestore', 'Node.js', 'Express'],
+      role: 'Lead React Native Developer',
+      challenges: 'Building a scalable real-time chat feature and ensuring low-latency image loading for a smooth user feed.',
+      image: 'https://placehold.co/800x600.png',
+      imageHint: 'social media',
+      liveUrl: '#',
+      repoUrl: '#'
+    }
+  ];
 
-  const projectList: Project[] = projects || [];
-
+export function Projects() {
   return (
     <section id="projects" className="py-20 sm:py-32">
       <div className="container mx-auto px-4">
         <h2 className="font-headline text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
         <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto">Here's a selection of projects that showcase my skills in React Native development.</p>
         
-        {error && (
-            <Alert variant="destructive" className="max-w-2xl mx-auto">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Error Fetching Projects</AlertTitle>
-                <AlertDescription>
-                    Could not fetch project data from the database. Please ensure the 'projects' table exists and your Supabase credentials are correct.
-                    <p className="font-mono text-xs mt-2 bg-background/50 p-2 rounded">{error.message}</p>
-                </AlertDescription>
-            </Alert>
-        )}
-
-        {!error && projectList.length > 0 && (
+        {projectList.length > 0 && (
           <Carousel className="w-full max-w-6xl mx-auto" opts={{ loop: true }}>
             <CarouselContent>
               {projectList.map((project) => (
@@ -84,7 +106,7 @@ export async function Projects() {
           </Carousel>
         )}
         
-        {!error && projectList.length === 0 && (
+        {projectList.length === 0 && (
           <div className="text-center text-muted-foreground">
              <p>I am currently adding my projects. Please check back later.</p>
           </div>
