@@ -3,15 +3,15 @@ import { GraduationCap } from "lucide-react";
 
 const educationData = [
 	{
+		degree: "Master's degree in Computer Systems Engineering",
+		institution: "EPI - International Multidisciplinary School",
+		period: "2022 - 2025",
+	},
+	{
 		degree:
 			"Bachelor's degree in Computer Systems Engineering (IoT & Embedded Systems)",
 		institution: "ISITCom Hammam Sousse",
 		period: "2019 - 2022",
-	},
-	{
-		degree: "Master's degree in Computer Systems Engineering",
-		institution: "EPI - International Multidisciplinary School",
-		period: "2022 - 2025",
 	},
 ];
 
