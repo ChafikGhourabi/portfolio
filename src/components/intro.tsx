@@ -13,7 +13,11 @@ export function Intro() {
 	};
 
 	return (
-		<section id="intro" className="py-20 sm:py-32 bg-secondary">
+		<section
+			id="intro"
+			className="py-20 sm:py-32 bg-secondary"
+			aria-label="Introduction"
+		>
 			<div className="container mx-auto px-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
 					<div className="flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
@@ -23,7 +27,10 @@ export function Intro() {
 						<h2 className="text-2xl md:text-3xl text-primary font-medium mb-6">
 							Mobile React Native Developer
 						</h2>
-						<p className="text-lg text-muted-foreground mb-8 max-w-xl">
+						<p
+							className="text-lg text-muted-foreground mb-8 max-w-xl"
+							role="banner"
+						>
 							I specialize in building beautiful and performant cross-platform
 							mobile applications with React Native. With over 3 years of
 							experience, I transform ideas into engaging user experiences,
