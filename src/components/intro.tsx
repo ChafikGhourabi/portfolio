@@ -7,7 +7,7 @@ import { Download, Github } from "lucide-react";
 export function Intro() {
 	const handleDownloadCV = () => {
 		const link = document.createElement("a");
-		link.href = "/documents/my-cv.pdf";
+		link.href = "/documents/chafik-ghourabi-resume.pdf";
 		link.download = "Chafik_GHOURABI_CV.pdf";
 		link.click();
 	};
