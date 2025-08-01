@@ -3,6 +3,10 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
+	icons: {
+		icon: "/favicon.png",
+		apple: "/favicon.png",
+	},
 	title: {
 		default: "Chafik GHOURABI - Mobile React Native Developer",
 		template: "%s | Chafik GHOURABI Portfolio",
@@ -37,12 +41,12 @@ export const metadata: Metadata = {
 			"Experienced Mobile React Native Developer specializing in cross-platform mobile applications. Portfolio showcasing innovative mobile solutions and technical expertise.",
 		siteName: "Chafik GHOURABI Portfolio",
 		images: [
-			// {
-			// 	url: "/og-image.jpg", // You'll need to create this image
-			// 	width: 1200,
-			// 	height: 630,
-			// 	alt: "Chafik GHOURABI - Mobile React Native Developer",
-			// },
+			{
+				url: "/images/my-image-old.jpg",
+				width: 1200,
+				height: 630,
+				alt: "Chafik GHOURABI - Mobile React Native Developer",
+			},
 		],
 	},
 	twitter: {
@@ -78,7 +82,10 @@ export default function RootLayout({
 		<html lang="en" className="!scroll-smooth">
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+				<link rel="icon" href="/favicon.png" type="image/png" />
+				<link rel="apple-touch-icon" href="/favicon.png" />
 				<link rel="apple-touch-icon" href="/favicon.svg" />
+
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					rel="preconnect"
