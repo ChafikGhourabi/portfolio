@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://portfolio-umber-nine-j8befgo8i9.vercel.app'
+  // const baseUrl = 'https://portfolio-umber-nine-j8befgo8i9.vercel.app' // TODO: replace this
 
   return {
     rules: {
@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/500', '/404'],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    // sitemap: `${baseUrl}/sitemap.xml`,
   }
 }

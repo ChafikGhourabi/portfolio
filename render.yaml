@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: my-portfolio-app
+    env: node
+    plan: free # or starter, standard, etc.
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    autoDeploy: true
+    branch: master # or main depending on your repo
+    envVars:
+      - key: NODE_ENV
+        value: production

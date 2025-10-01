@@ -28,14 +28,14 @@ export const metadata: Metadata = {
 	authors: [{ name: "Chafik GHOURABI" }],
 	creator: "Chafik GHOURABI",
 	publisher: "Chafik GHOURABI",
-	metadataBase: new URL("https://portfolio-umber-nine-j8befgo8i9.vercel.app"),
+	// metadataBase: new URL("https://portfolio-umber-nine-j8befgo8i9.vercel.app"), // TODO: replace this
 	alternates: {
 		canonical: "/",
 	},
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://portfolio-umber-nine-j8befgo8i9.vercel.app",
+		// url: "https://portfolio-umber-nine-j8befgo8i9.vercel.app", // TODO: replace this
 		title: "Chafik GHOURABI - Mobile React Native Developer",
 		description:
 			"Experienced Mobile React Native Developer specializing in cross-platform mobile applications. Portfolio showcasing innovative mobile solutions and technical expertise.",
@@ -54,7 +54,14 @@ export const metadata: Metadata = {
 		title: "Chafik GHOURABI - Mobile React Native Developer",
 		description:
 			"Experienced Mobile React Native Developer specializing in cross-platform mobile applications.",
-		images: [], // Same image as Open Graph
+		images: [
+			{
+				url: "/images/my-image-old.jpg",
+				width: 1200,
+				height: 630,
+				alt: "Chafik GHOURABI - Mobile React Native Developer",
+			},
+		],
 		creator: "@chafikghourabi",
 	},
 	robots: {
@@ -69,7 +76,7 @@ export const metadata: Metadata = {
 		},
 	},
 	verification: {
-		google: "xZntRqNCZ3Zar5dZp6-hn5l1Vtz_SxaXfV7-lbvARU8", // Add when you set up Google Search Console
+		google: "xZntRqNCZ3Zar5dZp6-hn5l1Vtz_SxaXfV7-lbvARU8",
 	},
 };
 
@@ -81,10 +88,10 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="!scroll-smooth">
 			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-				<link rel="icon" href="/favicon.png" type="image/png" />
-				<link rel="apple-touch-icon" href="/favicon.png" />
-				<link rel="apple-touch-icon" href="/favicon.svg" />
+				<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
+				<link rel="icon" type="image/png" href="/favicon.png?v=4" />
+				<link rel="apple-touch-icon" href="/favicon.png?v=4" />
+				<link rel="apple-touch-icon" href="/favicon.svg?v=4" />
 
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
@@ -110,7 +117,7 @@ export default function RootLayout({
 							jobTitle: "Mobile React Native Developer",
 							description:
 								"Experienced Mobile React Native Developer specializing in cross-platform mobile applications",
-							url: "https://portfolio-umber-nine-j8befgo8i9.vercel.app",
+							// url: "https://portfolio-umber-nine-j8befgo8i9.vercel.app", // TODO: replace this
 							sameAs: [
 								"https://linkedin.com/in/chafik-ghourabi-2888031b3",
 								"https://github.com/ChafikGhourabi",
