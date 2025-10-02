@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: my-portfolio-app
+    name: chafik-ghourabi-portfolio
     env: node
     plan: free # or starter, standard, etc.
     buildCommand: "npm install --include=dev && npm run build"
