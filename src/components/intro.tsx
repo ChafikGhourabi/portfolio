@@ -32,7 +32,7 @@ export function Intro() {
 							role="banner"
 						>
 							I specialize in building beautiful and performant cross-platform
-							mobile applications with React Native. With over 3 years of
+							mobile applications with React Native. With over 4 years of
 							experience, I transform ideas into engaging user experiences,
 							focusing on clean code and cutting-edge technologies like
 							TypeScript and Redux.
